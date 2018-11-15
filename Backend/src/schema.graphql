@@ -1,0 +1,10 @@
+# import Todo from "./generated/prisma.graphql"
+
+type Query {
+  tasks: [Todo!]!
+}
+
+type Mutation {
+  createTodo(task: String!): Todo
+  deleteTodo(id: ID!): Todo
+}
