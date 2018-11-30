@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snappshot testing 1`] = `
+<div
+  class="screen"
+  data-testid="app-test"
+>
+  <nav
+    class="bg-primary h-10 shadow"
+  >
+    <div
+      class="pb-3"
+    >
+      <h1
+        class="display-2 text-center pt-10 font-weight-normal text-primary"
+      >
+        Todo
+      </h1>
+    </div>
+    <form
+      class="mt-2"
+    >
+      <div
+        class="form-row align-items-center"
+      >
+        <div
+          class="col-5 offset-3"
+        >
+          <p
+            class="custom-size text-dark"
+          >
+            Task
+          </p>
+          <input
+            class="form-control"
+            id="inlineFormInput"
+            placeholder="Add your task"
+            type="text"
+          />
+        </div>
+        <div
+          class="col-auto"
+        >
+          <button
+            class="btn btn-primary btn-lg m25 w-100"
+            type="submit"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+    <div
+      class="mt-5"
+    >
+      <p>
+        loading...
+      </p>
+    </div>
+  </nav>
+</div>
+`;
