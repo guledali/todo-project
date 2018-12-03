@@ -1,45 +1,38 @@
 import React, { Component } from 'react';
-import { Mutation } from 'react-apollo';
-import gql from 'graphql-tag';
-import { LIST_ITEMS } from '../App'
-
-const DELETE_TASK = gql`
-  mutation DELETE_TASK($id: ID!) {
-    deleteTodo(id: $id) {
-      id
-      task
-    }
-  }
-`
+import { request } from 'graphql-request'
 
 class Tasks extends Component {
+  handleDelete = async () => {
+    const endpoint = 'https://my-app-nkefnbuovn.now.sh'
+
+    const mutation = `
+    mutation DELETE_TASK($id: ID!) {
+      deleteTodo(id: $id) {
+        id
+        task
+      }
+    }  
+  `
+    const variables = {
+      id: this.props.task.id
+    }
+
+    const data = await request(endpoint, mutation, variables)
+    console.log(JSON.stringify(data, undefined, 2))
+    window.location.reload();
+  }
   render() {
     return (
-          <div className="w-50 mx-auto">
-            <ul className="list-group">
-              <li className="list-group-item d-flex justify-content-between align-items-center py-3 px-4 rounded-0">
-                <span className="lead font-weight-normal">{this.props.task.task}</span>
-                <Mutation mutation={DELETE_TASK}>
-                {( deleteTodo ) => {
-                  return (
-                    <button className="close" aria-label="Close" onClick={ async() => {
-                      await deleteTodo({
-                      variables: {
-                        id: this.props.task.id
-                      },
-                      refetchQueries: [{
-                        query: LIST_ITEMS
-                      }],                       
-                    });
-                    }}>
-                      <span aria-hidden="true"  className="text-dark font-weight-bold">&times;</span>
-                    </button>
-                  )
-                }}
-                </Mutation>
-              </li>
-            </ul>
-          </div>
+      <div className="w-50 mx-auto">
+        <ul className="list-group">
+          <li className="list-group-item d-flex justify-content-between align-items-center py-3 px-4 rounded-0">
+            <span className="lead font-weight-normal">{this.props.task.task}</span>
+            <button className="close" aria-label="Close">
+              <span aria-hidden="true" className="text-dark font-weight-bold" onClick={this.handleDelete}>&times;</span>
+            </button>
+          </li>
+        </ul>
+      </div>
     );
   }
 }

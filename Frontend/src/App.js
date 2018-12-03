@@ -1,39 +1,59 @@
 import React, { Component } from 'react';
-
+import { request } from 'graphql-request'
+// import logo from './logo.svg';
+import Tasks from './components/Tasks';
 import './App.css';
 import Form from './components/Form';
-import Tasks from './components/Tasks';
 
-import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
 
-export const LIST_ITEMS = gql`
-  query LIST_ITEMS {
-    tasks {
-      id
-      task
-    }
-  }
-`
+// {this.state.loading && (
+//   <p>Loading...</p>
+// )}
 
 class App extends Component {
+  state = {
+    data: {
+      "tasks": [
+        {
+          "id": "cjp43njwfybxt0a03dsjcba8w",
+          "task": "drinking"
+        }
+      ]
+    },
+    loading: true
+  }
+  componentDidMount() {
+    const query = `
+      query LIST_ITEMS {
+        tasks {
+          id
+          task
+        }
+      }
+    `
+    
+    request('https://my-app-nkefnbuovn.now.sh', query).then(data =>
+      this.setState({
+        data: data,
+        loading: false
+      })
+    )
+  }
   render() {
+    console.log(this.state)
     return (
       <div className="screen">
         <nav className="bg-primary h-10 shadow">
-        <div className="pb-3">
-              <h1 className="display-2 text-center pt-10 font-weight-normal text-primary" >Todo</h1>
-              </div>
-                <Form />
-                <div className="mt-5">
-                  <Query query={LIST_ITEMS}>
-                  {({data, error, loading}) => {
-                    if(error) return <p>{error}</p>
-                    if(loading) return <p>loading...</p>
-                    return data.tasks.map(task => <Tasks key={task.id} task={task} />)
-                  }}
-                  </Query>
-                </div>
+          <div className="pb-3">
+            <h1 className="display-2 text-center pt-10 font-weight-normal text-primary" >Todo</h1>
+          </div>
+          <Form />
+          <div className="mt-5">
+            {this.state.data.tasks.map((task) =>
+              <Tasks key={task.id}
+                task={task} />
+            )}
+          </div>
         </nav>
       </div>
     );
