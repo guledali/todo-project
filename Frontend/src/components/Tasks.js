@@ -28,7 +28,7 @@ class Tasks extends Component {
           <li className="list-group-item d-flex justify-content-between align-items-center py-3 px-4 rounded-0">
             <span className="lead font-weight-normal">{this.props.task.task}</span>
             <button className="close" aria-label="Close">
-              <span aria-hidden="true" className="text-dark font-weight-bold" onClick={this.handleDelete}>&times;</span>
+              <span aria-hidden="true" className="text-dark font-weight-bold" onClick={this.handleDelete}  id="deleteTask">&times;</span>
             </button>
           </li>
         </ul>

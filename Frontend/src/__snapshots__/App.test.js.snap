@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snappshot testing 1`] = `
+<div
+  class="screen"
+  data-testid="app-test"
+>
+  <nav
+    class="bg-primary h-10 shadow"
+  >
+    <div
+      class="pb-3"
+    >
+      <h1
+        class="display-2 text-center pt-10 font-weight-normal text-primary"
+      >
+        Todo
+      </h1>
+    </div>
+    <form
+      class="mt-2"
+    >
+      <div
+        class="form-row align-items-center"
+      >
+        <div
+          class="col-5 offset-3"
+        >
+          <p
+            class="custom-size text-dark"
+          >
+            Task
+          </p>
+          <input
+            class="form-control"
+            data-testid="inputForm"
+            id="inlineFormInput"
+            placeholder="Add your task"
+            type="text"
+          />
+        </div>
+        <div
+          class="col-auto"
+        >
+          <button
+            class="btn btn-primary btn-lg m25 w-100"
+            id="submitButton"
+            type="submit"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+    <div
+      class="mt-5"
+    >
+      <div
+        class="w-50 mx-auto"
+      >
+        <ul
+          class="list-group"
+        >
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center py-3 px-4 rounded-0"
+          >
+            <span
+              class="lead font-weight-normal"
+            >
+              drinking
+            </span>
+            <button
+              aria-label="Close"
+              class="close"
+            >
+              <span
+                aria-hidden="true"
+                class="text-dark font-weight-bold"
+                id="deleteTask"
+              >
+                ×
+              </span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+`;

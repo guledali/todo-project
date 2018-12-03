@@ -42,7 +42,7 @@ class App extends Component {
   render() {
     console.log(this.state)
     return (
-      <div className="screen">
+      <div className="screen" data-testid="app-test">
         <nav className="bg-primary h-10 shadow">
           <div className="pb-3">
             <h1 className="display-2 text-center pt-10 font-weight-normal text-primary" >Todo</h1>
