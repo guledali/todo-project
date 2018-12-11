@@ -28,7 +28,7 @@ class App extends Component {
                 <div className="mt-5">
                   <Query query={LIST_ITEMS}>
                   {({data, error, loading}) => {
-                    if(error) return <p>{error}</p>
+                    if(error) return <p>{error.message}</p>
                     if(loading) return <p>loading...</p>
                     return data.tasks.map(task => <Tasks key={task.id} task={task} />)
                   }}

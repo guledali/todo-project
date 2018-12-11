@@ -45,10 +45,10 @@ class Form extends Component {
           <div className="form-row align-items-center">
             <div className="col-5 offset-3">
             <p className="custom-size text-dark">Task</p>
-              <input type="text" className="form-control" id="inlineFormInput" placeholder="Add your task"  onChange={this.handleChange}/>
+              <input type="text" className="form-control" id="inlineFormInput" placeholder="Add your task"  onChange={this.handleChange} data-testid="inputForm"/>
             </div>
             <div className="col-auto">
-              <button type="submit" className="btn btn-primary btn-lg m25 w-100">Submit</button>
+              <button type="submit" className="btn btn-primary btn-lg m25 w-100" data-testid="submitButton">Submit</button>
             </div>
           </div>
         </form>

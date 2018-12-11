@@ -18,7 +18,7 @@ class Tasks extends Component {
           <div className="w-50 mx-auto">
             <ul className="list-group">
               <li className="list-group-item d-flex justify-content-between align-items-center py-3 px-4 rounded-0">
-                <span className="lead font-weight-normal">{this.props.task.task}</span>
+                <span className="lead font-weight-normal" data-test="task">{this.props.task.task}</span>
                 <Mutation mutation={DELETE_TASK}>
                 {( deleteTodo ) => {
                   return (
@@ -32,7 +32,7 @@ class Tasks extends Component {
                       }],                       
                     });
                     }}>
-                      <span aria-hidden="true"  className="text-dark font-weight-bold">&times;</span>
+                      <span aria-hidden="true"  className="text-dark font-weight-bold" data-testid="deleteTask">&times;</span>
                     </button>
                   )
                 }}
