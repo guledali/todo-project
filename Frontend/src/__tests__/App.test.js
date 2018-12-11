@@ -3,6 +3,7 @@ import { mount } from 'enzyme';
 import wait from 'waait';
 import App, { LIST_ITEMS } from '../App';
 import { MockedProvider } from 'react-apollo/test-utils';
+import toJson from 'enzyme-to-json';
 
 
 describe('<App/>', () => {
@@ -34,11 +35,12 @@ describe('<App/>', () => {
     );
     await wait()
     wrapper.update()
-    // console.log(wrapper.debug())
+      // console.log(wrapper.debug())
       const task = wrapper.find('[data-test="task"]');
-      // console.log(task.debug());
+      console.log(task.debug());
       expect(task.contains('drinking')).toEqual(true);
       expect(task.contains('sleeping')).toEqual(true);
+      expect(toJson(task)).toMatchSnapshot();
   });
 
   it('loading data', () => {
@@ -69,8 +71,10 @@ describe('<App/>', () => {
     );
     wait()
     wrapper.update()
-      // console.log(wrapper.debug());
+      console.log(wrapper.debug());
       expect(wrapper.text()).toContain("loading...");
+      const loading = wrapper.find('[data-test="small"]');
+      expect(toJson(loading)).toMatchSnapshot();
   });
 
   it('display errros', async() => {
@@ -90,5 +94,7 @@ describe('<App/>', () => {
     wrapper.update()
     console.log(wrapper.debug());
     expect(wrapper.text()).toContain("GraphQL error: Items Not Found!");
+    const error = wrapper.find('[data-test="small"]');
+    expect(toJson(error)).toMatchSnapshot();
   });
 })

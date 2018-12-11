@@ -25,7 +25,7 @@ class App extends Component {
               <h1 className="display-2 text-center pt-10 font-weight-normal text-primary" >Todo</h1>
               </div>
                 <Form />
-                <div className="mt-5">
+                <div className="mt-5" data-test="small">
                   <Query query={LIST_ITEMS}>
                   {({data, error, loading}) => {
                     if(error) return <p>{error.message}</p>
